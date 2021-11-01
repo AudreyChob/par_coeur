@@ -1,0 +1,18 @@
+.liste-themes{
+  display: flex;
+  justify-content: center;
+  // align-items: center;
+  flex-direction: column;
+}
+// .container{
+//   background-image: url("src\\assets\\fond3.jpg");
+// }
+
+.container{
+  background-image: url("https://i.pinimg.com/564x/a4/9c/29/a49c29182a629ff24f64a81fdabe1585.jpg");
+  background-repeat: no-repeat;
+}
+
+ion-item{
+  --background: rgba(255, 255, 255, 0.4)
+}

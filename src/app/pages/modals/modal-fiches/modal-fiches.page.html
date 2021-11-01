@@ -1,0 +1,26 @@
+
+<ion-content>
+  <h1>Edition d'une carte : </h1>
+  <ion-card>
+    <ion-card-header>
+      <ion-label>Chapitre</ion-label>
+      <ion-input placeholder="Nom du chapitre" [(ngModel)]="chapitre"></ion-input>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="frontCard">
+        <ion-label> Question : </ion-label>
+        <ion-textarea placeholder="Question de la carte" [(ngModel)]="frontCard"></ion-textarea>
+      </div>
+      <div class="backCard">
+        <ion-label> Réponse : </ion-label>
+        <ion-textarea placeholder="Response de la carte" [(ngModel)]="backCard"></ion-textarea>
+      </div>
+    </ion-card-content>
+    <div class="">
+      <ion-toolbar>
+        <ion-button (click)="addFiche()">Enregistrer</ion-button>
+        <ion-button (click)="dismiss()">Annuler</ion-button>
+      </ion-toolbar>
+    </div>
+  </ion-card>
+</ion-content>

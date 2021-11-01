@@ -1,5 +1,7 @@
 {
   "name": "par_coeur",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

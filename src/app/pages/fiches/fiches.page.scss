@@ -1,0 +1,8 @@
+.title{
+  display: flex;
+  // flex-direction: row;
+  justify-content: space-between;
+}
+ion-item{
+  --background: rgba(255, 255, 255, 0.4)
+}

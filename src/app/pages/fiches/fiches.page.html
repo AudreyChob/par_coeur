@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="title">
+      <ion-title>
+        Fiches de {{theme}}
+      </ion-title>
+      <ion-button (click)="createFiche()"> + </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <div class="container" style='background-image: url("https://i.pinimg.com/564x/a4/9c/29/a49c29182a629ff24f64a81fdabe1585.jpg"); height: 100%'>
+    Liste de fiche :
+    <ion-item *ngFor="let fiche of fichesListe" (click)="selectTheme(fiche)">
+      {{fiche}}
+    </ion-item>
+  </div>
+</ion-content>
