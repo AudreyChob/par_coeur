@@ -1,0 +1,4 @@
+Deploiment sur firebase 
+
+ionic build --prod
+firebase deploy --only hosting

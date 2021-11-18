@@ -5,16 +5,16 @@
 </ion-header>
 
 <ion-content >
-  <div class="container" style='background-image: url("https://i.pinimg.com/564x/a4/9c/29/a49c29182a629ff24f64a81fdabe1585.jpg"); height: 100%'>
+  <div class="container" style='height: 100%'>
     <ion-item>
       <ion-input placeholder="Nouveau théme" [(ngModel)]="theme"></ion-input>
       <ion-button (click)="addTheme()" [disabled]="theme == ''">Ajouter théme</ion-button>
     </ion-item>
     <!-- <ion-button (click)="getThemes()">recup</ion-button> -->
     <div class="liste-themes">
-      <ion-item *ngFor="let theme of themesList" (click)="selectTheme(theme)">
-        {{theme}}
-      </ion-item>
+      <div class="card"*ngFor="let theme of themesList" (click)="selectTheme(theme.nom)">
+        <h2>{{theme.nom}}</h2>
+      </div>
     </div>
   </div>
 </ion-content>

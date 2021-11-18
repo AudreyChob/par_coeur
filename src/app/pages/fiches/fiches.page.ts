@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
+import { Chapitre } from 'src/app/models/chapitre';
+import { Fiche } from 'src/app/models/fiche';
 import { ModalFichesPage } from '../modals/modal-fiches/modal-fiches.page';
 
 
@@ -12,9 +14,11 @@ import { ModalFichesPage } from '../modals/modal-fiches/modal-fiches.page';
 })
 export class FichesPage implements OnInit {
   theme : string = "";
-  fichesListe = []
+  chapitresListe : Chapitre[] = [];
+  fichesListe : Fiche[] = [];
   constructor(
     public route : ActivatedRoute,
+    public router : Router,
     public afDB: AngularFireDatabase,
     public modalController: ModalController
   )
@@ -32,22 +36,39 @@ export class FichesPage implements OnInit {
       'theme': this.theme,
     }
     });
+    this.chapitresListe = []
+    this.fichesListe = []
     return await modal.present();
   }
 
   getFiches(){
     this.afDB.list('Fiches').snapshotChanges(['child_added']).subscribe(fiches=> {
       fiches.forEach(fiche => {
-        console.log(this.fichesListe.indexOf(fiche.payload.exportVal().chapitre))
-        if(this.fichesListe.indexOf(fiche.payload.exportVal().chapitre) == -1){
-          this.fichesListe.push(fiche.payload.exportVal().chapitre)
+        this.fichesListe.push(fiche.payload.exportVal());
+        if(this.chapitresListe.length == 0) {
+          this.chapitresListe.push(new Chapitre(fiche.payload.exportVal().chapitre, 0))
         }
-        console.log(this.fichesListe);
+        this.chapitresListe.forEach(chap => {
+          if(chap.nom != fiche.payload.exportVal().chapitre){
+            this.chapitresListe.push(new Chapitre(fiche.payload.exportVal().chapitre, 0))
+          }
+        });
+        this.filtreFiches(fiche.payload.exportVal().chapitre)
       });
     });
   }
 
+  filtreFiches(chapitre : Chapitre){
+    this.chapitresListe.forEach((chapitre, x) => {
+      if(this.fichesListe[x]['chapitre'] == chapitre.nom){
+        chapitre.nb_fiches += 1
+      }
+    });
+  }
 
+  selectChapitre(chapitre : Chapitre){
+    this.router.navigate(['revisions', chapitre.nom])
+  }
 
 
 }

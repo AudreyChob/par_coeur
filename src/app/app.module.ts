@@ -23,6 +23,7 @@ import { FormsModule } from '@angular/forms';
 import { environment } from '../environments/environment';
 import { ModalFichesPage } from './pages/modals/modal-fiches/modal-fiches.page';
 import { FichesPage } from './pages/fiches/fiches.page';
+import { RevisionPage } from './pages/revision/revision.page';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAoWMYqLJXfLrKJojlFDXMopZoDoK4KQ9Y",
@@ -42,6 +43,7 @@ const app = initializeApp(firebaseConfig);
     ThemesPage,
     ModalFichesPage,
     FichesPage,
+    RevisionPage
   ],
   entryComponents: [],
   imports:

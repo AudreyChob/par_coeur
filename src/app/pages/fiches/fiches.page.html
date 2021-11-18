@@ -2,7 +2,7 @@
   <ion-toolbar>
     <div class="title">
       <ion-title>
-        Fiches de {{theme}}
+        Chapitres de {{theme}}
       </ion-title>
       <ion-button (click)="createFiche()"> + </ion-button>
     </div>
@@ -10,10 +10,10 @@
 </ion-header>
 
 <ion-content >
-  <div class="container" style='background-image: url("https://i.pinimg.com/564x/a4/9c/29/a49c29182a629ff24f64a81fdabe1585.jpg"); height: 100%'>
-    Liste de fiche :
-    <ion-item *ngFor="let fiche of fichesListe" (click)="selectTheme(fiche)">
-      {{fiche}}
-    </ion-item>
+  <div class="container" style='  height: 100%'>
+    <div class="card" *ngFor="let chapitre of chapitresListe" (click)="selectChapitre(chapitre)">
+      <h2>{{chapitre.nom}}</h2>
+      <h6>{{chapitre.nb_fiches}} fiches</h6>
+    </div>
   </div>
 </ion-content>

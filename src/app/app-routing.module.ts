@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import {HomePage} from 'src/app/home/home.page'
 import { FichesPage } from './pages/fiches/fiches.page';
+import { RevisionPage } from './pages/revision/revision.page';
 import { ThemesPage } from './pages/themes/themes.page';
 
 const routes: Routes = [
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'fiches/:theme',
     component : FichesPage
+  },
+  {
+    path: 'revisions/:chapitre',
+    component : RevisionPage
   },
 ];
 
