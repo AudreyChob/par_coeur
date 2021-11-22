@@ -45,14 +45,21 @@ export class FichesPage implements OnInit {
     this.afDB.list('Fiches').snapshotChanges(['child_added']).subscribe(fiches=> {
       fiches.forEach(fiche => {
         this.fichesListe.push(fiche.payload.exportVal());
-        if(this.chapitresListe.length == 0) {
-          this.chapitresListe.push(new Chapitre(fiche.payload.exportVal().chapitre, 0))
-        }
-        this.chapitresListe.forEach(chap => {
-          if(chap.nom != fiche.payload.exportVal().chapitre){
+        if(fiche.payload.exportVal().theme == this.theme){
+          if(this.chapitresListe.length == 0){
             this.chapitresListe.push(new Chapitre(fiche.payload.exportVal().chapitre, 0))
           }
-        });
+          this.chapitresListe.forEach(chap => {
+            console.log("this.chapitresListe")
+            console.log(this.chapitresListe)
+            if(chap.nom != fiche.payload.exportVal().chapitre){
+              this.chapitresListe.push(new Chapitre(fiche.payload.exportVal().chapitre, 0))
+            }
+          });
+        }
+        // if(this.chapitresListe.length == 0) {
+        //   this.chapitresListe.push(new Chapitre(fiche.payload.exportVal().chapitre, 0))
+        // }
         this.filtreFiches(fiche.payload.exportVal().chapitre)
       });
     });
