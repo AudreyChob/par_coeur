@@ -5,5 +5,5 @@
 </ion-header>
 
 <ion-content>
-  <app-flip-card></app-flip-card>
+    <app-flip-card *ngIf="filtredFiches != []" [filtredFiches]="filtredFiches"></app-flip-card>
 </ion-content>

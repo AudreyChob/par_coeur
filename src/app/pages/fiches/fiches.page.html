@@ -10,6 +10,11 @@
 </ion-header>
 
 <ion-content >
+  <ion-fab vertical="top" horizontal="end" edge slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="person"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
   <div class="container" style='  height: 100%'>
     <div class="card" *ngFor="let chapitre of chapitresListe" (click)="selectChapitre(chapitre)">
       <h2>{{chapitre.nom}}</h2>

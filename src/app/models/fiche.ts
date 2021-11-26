@@ -1,10 +1,11 @@
 import { Themes } from "./themes";
 
 export class Fiche {
-    _theme : Themes;
-    _frontCard : string;
-    _backCard : string;
-  
+    _theme : string;
+    _chapitre : string;
+    _front : string;
+    _back : string;
+
     get theme(){
       return this._theme;
     }
@@ -12,17 +13,17 @@ export class Fiche {
       this._theme = theme;
     }
 
-    get frontCard(){
-      return this._frontCard;
+    get front(){
+      return this._front;
     }
-    set frontCard(front){
-      this._frontCard = front;
+    set front(front){
+      this._front = front;
     }
 
-    get backCard(){
-      return this._backCard;
+    get back(){
+      return this._back;
     }
-    set backCard(back){
-      this._backCard = back;
+    set back(back){
+      this._back = back;
     }
 }

@@ -5,7 +5,8 @@ import {
   transition,
   trigger
 } from "@angular/animations";
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
+import { Fiche } from "src/app/models/fiche";
 
 export interface CardData {
   imageId: string;
@@ -50,10 +51,27 @@ export class FlipCardComponent implements OnInit {
     imageId: "pDGNBK9A0sk",
     state: "default"
   };
+  @Input('filtredFiches') filtredFiches : Fiche[]
+  currentCard : Fiche;
 
-  constructor() { }
+  constructor() {
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.filtredFiches)
+    let interval = setInterval(()=>{
+      if(this.filtredFiches != []){
+        this.currentCard = this.filtredFiches[0]
+        console.log(this.currentCard)
+      }
+      if(this.currentCard){
+        clearInterval(interval)
+      }
+    },500)
+  }
+
+  ionViewDidEnter(){
+  }
 
   cardClicked() {
     if (this.data.state === "default") {

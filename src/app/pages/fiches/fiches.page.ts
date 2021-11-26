@@ -42,34 +42,35 @@ export class FichesPage implements OnInit {
   }
 
   getFiches(){
-    this.afDB.list('Fiches').snapshotChanges(['child_added']).subscribe(fiches=> {
-      fiches.forEach(fiche => {
-        this.fichesListe.push(fiche.payload.exportVal());
-        if(fiche.payload.exportVal().theme == this.theme){
+    this.fichesListe = []
+    this.afDB.list('Fiches').snapshotChanges(['child_added']).subscribe((resfiches)=> {
+      // console.log(resfiches)
+      resfiches.forEach(resfiche => {
+        this.fichesListe.push(resfiche.payload.exportVal());
+      });
+      this.fichesListe.forEach((fiche, x) => {
+        if(fiche['theme'] == this.theme){
           if(this.chapitresListe.length == 0){
-            this.chapitresListe.push(new Chapitre(fiche.payload.exportVal().chapitre, 0))
+            this.chapitresListe.push(new Chapitre(fiche['chapitre'], 0))
           }
-          this.chapitresListe.forEach(chap => {
-            console.log("this.chapitresListe")
-            console.log(this.chapitresListe)
-            if(chap.nom != fiche.payload.exportVal().chapitre){
-              this.chapitresListe.push(new Chapitre(fiche.payload.exportVal().chapitre, 0))
+          this.chapitresListe.forEach((chap) => {
+            if(chap.nom != this.fichesListe[x]['chapitre']){
+              this.chapitresListe.push(new Chapitre(fiche['chapitre'], 0))
             }
           });
+          //console.log(this.chapitresListe)
         }
-        // if(this.chapitresListe.length == 0) {
-        //   this.chapitresListe.push(new Chapitre(fiche.payload.exportVal().chapitre, 0))
-        // }
-        this.filtreFiches(fiche.payload.exportVal().chapitre)
-      });
-    });
+        this.filtreFiches(fiche['chapitre'])
+      })
+    })
   }
 
   filtreFiches(chapitre : Chapitre){
-    this.chapitresListe.forEach((chapitre, x) => {
-      if(this.fichesListe[x]['chapitre'] == chapitre.nom){
-        chapitre.nb_fiches += 1
-      }
+    this.fichesListe.forEach((fiche, x) => {
+      console.log(chapitre)
+        if(fiche['chapitre'] == chapitre.nom){
+          chapitre.nb_fiches += 1
+        }
     });
   }
 
