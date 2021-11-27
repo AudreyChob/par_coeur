@@ -7,7 +7,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  // height: 100%;
   // background-color: transparent
 }
 
@@ -34,7 +34,7 @@
 .front{
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   transform: rotateY(180deg);
 }

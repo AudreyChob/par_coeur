@@ -1,0 +1,14 @@
+.boutons{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: stretch;
+}
+ion-toolbar{
+  --background: transparent;
+  margin-bottom: 50px
+
+}
+.note{
+  text-align: center;
+}

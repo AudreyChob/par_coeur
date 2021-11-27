@@ -52,22 +52,13 @@ export class FlipCardComponent implements OnInit {
     state: "default"
   };
   @Input('filtredFiches') filtredFiches : Fiche[]
-  currentCard : Fiche;
+  @Input('currentCard') currentCard : Fiche
 
   constructor() {
   }
 
   ngOnInit() {
-    console.log(this.filtredFiches)
-    let interval = setInterval(()=>{
-      if(this.filtredFiches != []){
-        this.currentCard = this.filtredFiches[0]
-        console.log(this.currentCard)
-      }
-      if(this.currentCard){
-        clearInterval(interval)
-      }
-    },500)
+
   }
 
   ionViewDidEnter(){
@@ -80,5 +71,8 @@ export class FlipCardComponent implements OnInit {
       this.data.state = "default";
     }
   }
+
+
+
 
 }

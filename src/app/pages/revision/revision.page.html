@@ -1,9 +1,19 @@
-<ion-header>
+<ion-header style="height: 56px">
   <ion-toolbar>
-    <ion-title>Révision</ion-title>
+    <ion-title>Révision : {{chapitre}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <app-flip-card *ngIf="filtredFiches != []" [filtredFiches]="filtredFiches"></app-flip-card>
+  <ion-toolbar *ngIf="filtredFiches != []  && nbFiche != -1">
+    <div class="note">
+      <h3>Note :
+      {{note}} / {{nbFiche}}</h3>
+    </div>
+    <div class="boutons">
+      <ion-button color="success" (click)="changeCard(true)"><ion-icon name="happy-outline"></ion-icon></ion-button>
+      <ion-button color="danger" (click)=changeCard(false)><ion-icon name="sad-outline"></ion-icon></ion-button>
+    </div>
+  </ion-toolbar>
+    <app-flip-card *ngIf="filtredFiches != []" [filtredFiches]="filtredFiches" [currentCard]="currentCard"></app-flip-card>
 </ion-content>
