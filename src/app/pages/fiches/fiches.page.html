@@ -17,7 +17,7 @@
   <div class="container" style='  height: 100%'>
     <div class="card" *ngFor="let chapitre of chapitresListe" (click)="selectChapitre(chapitre)">
       <h2>{{chapitre.nom}}</h2>
-      <h6>{{chapitre.nb_fiches}} fiches</h6>
+      <h6>{{chapitre.nb_fiches+1}} fiches</h6>
     </div>
   </div>
 </ion-content>

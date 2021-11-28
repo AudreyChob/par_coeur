@@ -55,14 +55,15 @@ export class FichesPage implements OnInit {
             this.chapitresListe.push(new Chapitre(fiche['chapitre'], 0))
           }
           this.chapitresListe.forEach((chap, x) => {
-            if(chap.nom != this.fichesListe[x]['chapitre']){
+            console.log(fiche['chapitre'])
+            if(chap.nom != fiche['chapitre']){
               this.chapitresListe.push(new Chapitre(fiche['chapitre'], 0))
             }
             else{
               chap.nb_fiches += 1
             }
           });
-          // console.log(this.chapitresListe)
+          console.log(this.chapitresListe)
         }
       })
     })
